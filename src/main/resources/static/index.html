@@ -1,13 +1,59 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스케줄 관리</title>
 </head>
 <body>
-<h4>Hello</h4>
+<h1>스케줄 관리</h1>
+
+<!-- 스케줄 생성 폼 -->
+<h2>스케줄 생성</h2>
+<form id="scheduleForm">
+    <label for="username">사용자 이름:</label>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="contents">내용:</label>
+    <input type="text" id="contents" name="contents" required><br><br>
+
+    <label for="password">비밀번호:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <button type="submit">생성</button>
+</form>
+
+<script>
+    document.getElementById("scheduleForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const formData = {
+            username: document.getElementById("username").value,
+            contents: document.getElementById("contents").value,
+            password: document.getElementById("password").value
+        };
+
+        fetch("http://localhost:8080/schedules", {  // URL이 정확한지 확인
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Server returned:", data); // 서버에서 반환된 데이터를 콘솔에 출력
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("스케줄 생성에 실패했습니다.");
+            });
+    });
+</script>
 </body>
 </html>
