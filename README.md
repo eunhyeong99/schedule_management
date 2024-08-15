@@ -4,3 +4,6 @@
 3. JDBC 사용해서 Repository 구성하기
 
 ![image](https://github.com/user-attachments/assets/ef42449f-bcf7-40ba-91ef-e2045505aa6f)
+
+ERD
+![image](https://github.com/user-attachments/assets/17b9889c-c380-466a-95a2-4b3005ddc0f8)
