@@ -5,13 +5,8 @@ import com.sparta.schedule_management.dto.ScheduleRequestDto;
 import com.sparta.schedule_management.dto.ScheduleResponseDto;
 import com.sparta.schedule_management.entity.Schedule;
 import com.sparta.schedule_management.service.ScheduleService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,6 +21,7 @@ public class ScheduleController {
 
     @PostMapping("/schedules")
     public ScheduleResponseDto createSchedule(@RequestBody ScheduleRequestDto requestDto) {
+        System.out.println("test");
         return scheduleService.createSchedule(requestDto);
     }
 
@@ -36,7 +32,7 @@ public class ScheduleController {
     }
 
     // 전체 일정 조회
-    @GetMapping
+    @GetMapping("/schedules")
     public List<Schedule> getSchedules(
             @RequestParam LocalDate date,
             @RequestParam String manager
