@@ -21,7 +21,7 @@ public class ScheduleController {
 
     @PostMapping("/schedules")
     public ScheduleResponseDto createSchedule(@RequestBody ScheduleRequestDto requestDto) {
-        System.out.println("test234");
+        System.out.println("test236");
         return scheduleService.createSchedule(requestDto);
     }
 
